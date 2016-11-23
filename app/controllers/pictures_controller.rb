@@ -17,6 +17,8 @@ class PicturesController < ApplicationController
 
   def create
     @picture = Picture.new(pictures_params)
+    @picture.user_id = current_user.id
+    #binding.pry
     if @picture.save
       redirect_to pictures_path, notice: "画像を投稿しました。"
     else
@@ -53,7 +55,7 @@ class PicturesController < ApplicationController
 
   private
     def pictures_params
-      params.require(:picture).permit(:title, :image, :comment, :image_cash, :remove_image)
+      params.require(:picture).permit(:title, :image, :comment, :image_cache, :remove_image)
     end
 
     def set_picture

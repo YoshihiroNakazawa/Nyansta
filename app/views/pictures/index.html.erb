@@ -8,6 +8,7 @@
 
     <% @pictures.each do |picture| %>
       <div class="row">
+        <%= picture.user.name %>
         <h4><strong><%= picture.title %></strong></h4>
         <p>画像：</p>
         <% if picture.image? %>

@@ -3,7 +3,7 @@
     <h3>以下の内容で送信します。</h3>
     <%= form_for(@picture) do |f| %>
       <%= f.hidden_field :title %>
-      <%= f.hidden_field :image %>
+      <!--<%= f.hidden_field :image %>-->
       <%= f.hidden_field :comment %>
       <%= f.hidden_field :image_cache %>
       <p>タイトル：<%= @picture.title %></P>

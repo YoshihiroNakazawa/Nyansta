@@ -55,3 +55,5 @@ gem 'jquery-turbolinks'
 gem 'rails_12factor', group: :production
 
 gem 'devise'
+
+gem "refile", require: "refile/rails"
