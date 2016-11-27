@@ -47,6 +47,7 @@ group :development, :test do
 end
 
 gem 'carrierwave'
+gem 'rmagick'
 
 gem 'twitter-bootstrap-rails'
 
@@ -60,8 +61,13 @@ gem "refile", require: "refile/rails"
 
 group :development do
   gem 'letter_opener_web'
+  gem 'dotenv-rails'
 end
 
 gem 'rails_admin'
 
 gem 'cancan'
+
+gem 'omniauth'
+gem 'omniauth-twitter'
+gem 'omniauth-facebook'

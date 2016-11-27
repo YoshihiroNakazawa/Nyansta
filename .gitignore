@@ -13,3 +13,6 @@
 /tmp
 
 /public/uploads
+
+#dotenv-rails
+.env

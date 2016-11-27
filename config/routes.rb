@@ -1,7 +1,7 @@
 Rails.application.routes.draw do
 
   mount RailsAdmin::Engine => '/admin', as: 'rails_admin'
-  devise_for :users
+
   resources :pictures, only: [:index, :new, :create, :edit, :update, :destroy] do
     collection do
       post :confirm
@@ -13,6 +13,11 @@ Rails.application.routes.draw do
   if Rails.env.development?
     mount LetterOpenerWeb::Engine, at: "/letter_opener"
   end
+
+  devise_for :users, controllers: {
+    registrations: "users/registrations",
+    omniauth_callbacks: "users/omniauth_callbacks"
+  }
 
   #get 'pictures' => 'pictures#index'
   # The priority is based upon order of creation: first created -> highest priority.

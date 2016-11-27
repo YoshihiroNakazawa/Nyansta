@@ -13,6 +13,8 @@ class ApplicationController < ActionController::Base
     redirect_to main_app.root_url, :alert => exception.message
   end
 
+  PERMISSIBLE_ATTRIBUTES = %i(name avatar avatar_cache)
+
   protected
 
     #deviseのストロングパラメーターにカラム追加するメソッドを定義

@@ -15,37 +15,47 @@
         <%= f.text_field :name, autofocus: true, class: "form-control", placeholder: "名前" %>
       </div>
 
-      <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-        <!--<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>-->
-        <div><%= resource.unconfirmed_email %>の確認待ち</div>
+      <% if @user.provider.blank? %>
+
+        <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+          <!--<div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>-->
+          <div><%= resource.unconfirmed_email %>の確認待ち</div>
+        <% end %>
+
+        <div class="field">
+          <!--
+          <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
+          <%= f.password_field :password, autocomplete: "off" %>
+          <% if @minimum_password_length %>
+            <br />
+            <em><%= @minimum_password_length %> characters minimum</em>
+          <% end %>
+          -->
+          <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "新しいパスワード(空欄のままなら変更しません)" %>
+        </div>
+
+        <div class="field">
+          <!--
+          <%= f.label :password_confirmation %><br />
+          <%= f.password_field :password_confirmation, autocomplete: "off" %>
+          -->
+          <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "新しいパスワード(確認)" %>
+        </div>
+
+        <div class="field">
+          <!--
+          <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
+          <%= f.password_field :current_password, autocomplete: "off" %>
+          -->
+          <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "現在のパスワード" %>
+        </div>
+        
       <% end %>
 
       <div class="field">
-        <!--
-        <%= f.label :password %> <i>(leave blank if you don't want to change it)</i><br />
-        <%= f.password_field :password, autocomplete: "off" %>
-        <% if @minimum_password_length %>
-          <br />
-          <em><%= @minimum_password_length %> characters minimum</em>
-        <% end %>
-        -->
-        <%= f.password_field :password, autocomplete: "off", class: "form-control", placeholder: "新しいパスワード(空欄のままなら変更しません)" %>
-      </div>
-
-      <div class="field">
-        <!--
-        <%= f.label :password_confirmation %><br />
-        <%= f.password_field :password_confirmation, autocomplete: "off" %>
-        -->
-        <%= f.password_field :password_confirmation, autocomplete: "off", class: "form-control", placeholder: "新しいパスワード(確認)" %>
-      </div>
-
-      <div class="field">
-        <!--
-        <%= f.label :current_password %> <i>(we need your current password to confirm your changes)</i><br />
-        <%= f.password_field :current_password, autocomplete: "off" %>
-        -->
-        <%= f.password_field :current_password, autocomplete: "off", class: "form-control", placeholder: "現在のパスワード" %>
+        <%= profile_img(@user) if profile_img(@user) %>
+        <%= f.file_field :avatar %>
+        <%= f.hidden_field :avatar_cache %>
       </div>
 
       <div class="actions">
