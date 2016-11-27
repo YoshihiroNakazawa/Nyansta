@@ -61,3 +61,7 @@ gem "refile", require: "refile/rails"
 group :development do
   gem 'letter_opener_web'
 end
+
+gem 'rails_admin'
+
+gem 'cancan'
