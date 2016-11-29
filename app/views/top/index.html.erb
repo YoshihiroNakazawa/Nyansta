@@ -1,44 +1,65 @@
+<!--
 <section class="main-header">
   <p class="flash"><%= notice %><%= alert %></p>
-  <img src="<%= asset_path "achieve.png" %>">
+  <section class="main-header-img1">
+    <img src="<%= asset_path "nyan7.png" %>">
+  </section>
+  <section class="main-header-img2">
+    <img src="<%= asset_path "logonyan1.png" %>">
+  </section>
 </section>
+-->
+<section class="main-header container-fluid">
+  <div class="row">
+    <p class="flash"><%= notice %><%= alert %></p>
+    <div class="header-images">
+      <div class="col-md-6 col-sm-12">
+        <div class="main-header-img1">
+          <img src="<%= asset_path "nyan7.png" %>">
+        </div>
+      </div>
+      <div class="col-md-6 col-sm-12">
+        <div class="main-header-img2">
+          <img src="<%= asset_path "logonyan1.png" %>">
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
 <section class="about">
-  <h1>About Achieve</h1>
-  <p>
-     Achieveは、受講生のために作成された、教材用アプリです。<br>
-     Achieveを作り終えることで、SecondTeamに参加するための力を身につけることができます。
-  </p>
-  <p>
-     Acheiveを一言で表すと、タスク管理アプリです。<br>
-     チームメンバーが、今どのようなタスクを行っているかリアルタイムで把握することができます。
-  </p>
+  <!--<h1>About Nyanstagram</h1>-->
+  <h2>
+     別に猫の画像じゃなくても構いません。
+  </h2>
 </section>
+
 <section class="function container-fluid">
   <div class="row">
-    <h2>Function</h2>
+    <!--<h2>Function</h2>-->
     <div class="function-images">
       <div class="col-md-3 col-sm-6">
         <div class="function-image">
-          <img src="<%= asset_path "key.png" %>">
-          <p>ログイン機能</p>
+          <img src="<%= asset_path "main1.png" %>">
+          <p>コンビニを仕切る</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="function-image">
-          <img src="<%= asset_path "mails.png" %>">
-          <p>メール送信機能</p>
+          <img src="<%= asset_path "main2.png" %>">
+          <p>城に出没</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="function-image">
-          <img src="<%= asset_path "girls.png" %>">
-          <p>友達つながり機能</p>
+          <img src="<%= asset_path "main3.png" %>">
+          <p>覗く</p>
         </div>
       </div>
       <div class="col-md-3 col-sm-6">
         <div class="function-image">
-          <img src="<%= asset_path "comment.png" %>">
-          <p>コメント投稿機能</p>
+          <img src="<%= asset_path "main4.png" %>">
+          <p>木彫り</p>
         </div>
       </div>
     </div>

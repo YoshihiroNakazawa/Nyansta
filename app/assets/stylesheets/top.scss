@@ -14,7 +14,13 @@ header {
 }
 .navbar-default {
   .navbar-brand {
-    color: #ccc;
+    background-image: url("logonyanbar.png");
+    background-size: contain;
+    background-repeat: no-repeat;
+    background-position: left center;
+    //height: 50px;
+    width: 100px;
+    //color: #ccc;
     &:hover {
       color: white;
     }
@@ -51,19 +57,34 @@ header {
 }
 
 .main-header {
-  padding-bottom: 15%;
+  padding-bottom: 5%;
   width: 100%;
-  background-size: cover;
-  background-image: url("header.jpg");
-  background-attachment: fixed;
+  //background-size: cover;
+  //background-image: url("header.jpg");
+  //background-attachment: fixed;
 }
 
-.main-header img {
-  display: block;
-  margin: 0 auto;
-  width: 25%;
-  padding-top: 15%;
+.main-header-img1 {
+  //float: left;
+  //display: block;
+  //margin: 0 auto;
+  width: 80%;
+  //padding-top: 5%;
 }
+
+.main-header-img2 {
+  //display: block;
+  //margin: 0 auto;
+  width: 50%;
+  //padding-top: 5%;
+}
+
+//.main-header img {
+  //display: block;
+  //margin: 0 auto;
+  //width: 25%;
+  //padding-top: 15%;
+//}
 
 .about {
   background-color: white;
@@ -122,6 +143,6 @@ body {
 }
 
 .flash {
-  color: white;
+  color: black;
   padding-top: 10px;
 }

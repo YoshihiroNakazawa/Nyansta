@@ -6,7 +6,9 @@
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
   <%= csrf_meta_tags %>
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <%= favicon_link_tag %>
 </head>
+
 <body>
 
   <header>
@@ -20,7 +22,8 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <%= link_to "Nyansta", root_path, class: "navbar-brand" %>
+          <!--<a class="navbar-brand" href="#"></a>-->
+          <%= link_to "", root_path, class: "navbar-brand" %>
         </div>
         <!-- Collect the nav links, forms, and other content for toggling -->
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
@@ -47,8 +50,8 @@
 <%= yield %>
 
   <footer>
-    <p>運営会社DIVE INTO CODE株式会社</p>
-    <p>© 2015-2016 Copyright DIVE INTO CODE Corp.</p>
+    <p>DIVE14_exam</p>
+    <p>Y/N</p>
   </footer>
 
 </body>
