@@ -4,7 +4,12 @@ class PicturesController < ApplicationController
   before_action :set_picture, only: [:edit, :update, :destroy]
 
   def index
-    @pictures = Picture.all
+    if params[:user_id]
+      @user = User.find(params[:user_id])
+      @pictures = Picture.where(user_id: params[:user_id])
+    else
+      @pictures = Picture.all
+    end
   end
 
   def new

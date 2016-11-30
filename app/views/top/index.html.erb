@@ -15,7 +15,7 @@
           <div class="user_image">
             <%= profile_img(user) if profile_img(user) %>
           </div>
-          <%= user.name %>
+          <%= link_to user.name,[user, :pictures] %>
         </div>
       <% end %>
     </div>
