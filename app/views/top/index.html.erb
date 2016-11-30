@@ -1,70 +1,27 @@
-<!--
-<section class="main-header">
-  <p class="flash"><%= notice %><%= alert %></p>
-  <section class="main-header-img1">
-    <img src="<%= asset_path "nyan7.png" %>">
-  </section>
-  <section class="main-header-img2">
-    <img src="<%= asset_path "logonyan1.png" %>">
-  </section>
-</section>
--->
-<section class="main-header container-fluid">
+<%= render "shared/navbar" %>
+<% if notice != nil %>
+<div class="alert alert-warning alert-dismissable">
+    <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <p><%= notice %></p>
+  </div>
+</div>
+<% end %>
+
+<div class=container style="margin-bottom:50px">
   <div class="row">
-    <p class="flash"><%= notice %><%= alert %></p>
-    <div class="header-images">
-      <div class="col-md-6 col-sm-12">
-        <div class="main-header-img1">
-          <img src="<%= asset_path "nyan7.png" %>">
+    <div class="col-sm-8 col-sm-offset-2 col-xs-12">
+      <% @users.each do |user| %>
+        <div class="user">
+          <div class="user_image">
+            <%= profile_img(user) if profile_img(user) %>
+          </div>
+          <%= user.name %>
         </div>
-      </div>
-      <div class="col-md-6 col-sm-12">
-        <div class="main-header-img2">
-          <img src="<%= asset_path "logonyan1.png" %>">
-        </div>
-      </div>
+      <% end %>
     </div>
   </div>
-</section>
+</div>
 
-<section class="about">
-  <!--<h1>About Nyanstagram</h1>-->
-  <h2>
-     別に猫の画像じゃなくても構いません。
-  </h2>
-</section>
-
-<section class="function container-fluid">
-  <div class="row">
-    <!--<h2>Function</h2>-->
-    <div class="function-images">
-      <div class="col-md-3 col-sm-6">
-        <div class="function-image">
-          <img src="<%= asset_path "main1.png" %>">
-          <p>コンビニを仕切る</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="function-image">
-          <img src="<%= asset_path "main2.png" %>">
-          <p>城に出没</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="function-image">
-          <img src="<%= asset_path "main3.png" %>">
-          <p>覗く</p>
-        </div>
-      </div>
-      <div class="col-md-3 col-sm-6">
-        <div class="function-image">
-          <img src="<%= asset_path "main4.png" %>">
-          <p>木彫り</p>
-        </div>
-      </div>
-    </div>
-  </div>
-</section>
 <div id="page-top-btn" class="page-top-btn">
   <p><a class="move-page-top" id="move-page-top">▲</a></p>
 </div>
