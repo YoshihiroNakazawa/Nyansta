@@ -3,13 +3,25 @@
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
     <p><%= notice %></p>
 
-    <h1>投稿画像一覧</h1>
+    <!--<h1>投稿画像一覧</h1>-->
 
     <%= link_to "新規画像投稿", new_picture_path, class: 'btn btn-default' %>
 
+    <% if @user != nil %>
+      <div class="user">
+        <div class="user_image">
+          <%= profile_img(@user) if profile_img(@user) %>
+        </div>
+        <%= @user.name %>
+      </div>
+    <% end %>
+
     <% @pictures.each do |picture| %>
       <div class="row">
-        <%= picture.user.name %>
+        <% if @user == nil %>
+          <%= link_to picture.user.name,[picture.user, :pictures] %>
+          <!--<%= picture.user.name %>-->
+        <% end %>
         <h4><strong><%= picture.title %></strong></h4>
         <p>画像：</p>
         <% if picture.image? %>

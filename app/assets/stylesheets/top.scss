@@ -1,7 +1,7 @@
 header {
   width: 100%;
   background-color: white;
-  height: 54px;
+  //height: 54px;
 }
 
 .navbar-default {
@@ -62,6 +62,9 @@ header {
   float: left;
   margin-right: 10px;
   width: 50px;
+  img {
+    border-radius: 50%;
+  }
 }
 
 footer {
