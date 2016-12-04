@@ -12,9 +12,16 @@
       <% @users.each do |user| %>
         <div class="user">
           <div class="user_image">
-            <%= profile_img(user) if profile_img(user) %>
+            <% if profile_img(user) %>
+              <%= link_to profile_img(user),[user, :pictures] %>
+            <% end %>
           </div>
           <%= link_to user.name,[user, :pictures] %>
+          <% if user.id == current_user.id %>
+            <p><%= Picture.where(user_id: user.id).count.to_s %>件の投稿(ログイン中)</p>
+          <% else %>
+            <p><%= Picture.where(user_id: user.id).count.to_s %>件の投稿</p>
+          <% end %>
         </div>
       <% end %>
     </div>
