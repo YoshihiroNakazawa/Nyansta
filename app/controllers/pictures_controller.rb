@@ -6,9 +6,9 @@ class PicturesController < ApplicationController
   def index
     if params[:user_id]
       @user = User.find(params[:user_id])
-      @pictures = Picture.where(user_id: params[:user_id])
+      @pictures = Picture.where(user_id: params[:user_id]).order(updated_at: :desc)
     else
-      @pictures = Picture.all
+      @pictures = Picture.all.order(updated_at: :desc)
     end
   end
 
@@ -25,7 +25,11 @@ class PicturesController < ApplicationController
     @picture.user_id = current_user.id
     #binding.pry
     if @picture.save
-      redirect_to pictures_path, notice: "画像を投稿しました。"
+      if params[:user_id]
+        redirect_to user_pictures_path(user_id: params[:user_id]), notice: "画像を投稿しました。"
+      else
+        redirect_to pictures_path, notice: "画像を投稿しました。"
+      end
       NoticeMailer.sendmail_picture(@picture).deliver
     else
       render 'new'
@@ -41,7 +45,11 @@ class PicturesController < ApplicationController
     set_picture
     #@picture = Picture.find(params[:id])
     if @picture.update(pictures_params)
-      redirect_to pictures_path, notice: "投稿内容を更新しました。"
+      if params[:user_id]
+        redirect_to user_pictures_path(user_id: params[:user_id]), notice: "投稿内容を更新しました。"
+      else
+        redirect_to pictures_path, notice: "投稿内容を更新しました。"
+      end
     else
       render "edit"
     end
@@ -51,7 +59,11 @@ class PicturesController < ApplicationController
     set_picture
     #@picture = Picture.find(params[:id])
     @picture.destroy
-    redirect_to pictures_path, notice: "投稿を削除しました。"
+    if params[:user_id]
+      redirect_to user_pictures_path(user_id: params[:user_id]), notice: "投稿を削除しました。"
+    else
+      redirect_to pictures_path, notice: "投稿を削除しました。"
+    end
   end
 
   def confirm

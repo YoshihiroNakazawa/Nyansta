@@ -1,8 +1,14 @@
 <%= render "shared/navbar" %>
+<% if notice != nil %>
+  <div class="alert alert-warning alert-dismissable">
+    <button class="close" data-dismiss="alert" aria-hidden="true">&times;</button>
+    <p><%= notice %></p>
+  </div>
+<% end %>
+
 <div class="container">
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
-    <p><%= notice %></p>
-
+    
     <!--<h1>投稿画像一覧</h1>-->
 
     <!--<%= link_to "新規画像投稿", new_picture_path, class: 'btn btn-default' %>-->
@@ -23,14 +29,18 @@
           <!--<%= picture.user.name %>-->
         <% end %>
         <h4><strong><%= picture.title %></strong></h4>
-        <p>画像：</p>
         <% if picture.image? %>
           <%= image_tag picture.image.url %>
         <% end %><br>
-        <p>コメント：<%= picture.comment %></p>
+        <p><%= picture.comment %></p>
         <% if picture.user_id == current_user.id %>
-          <%= link_to "投稿内容を編集する", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-success' %>
-          <%= link_to "投稿内容を削除する", picture_path(picture.id), method: :delete, data: {confirm: "本当に削除して良いですか？"}, class: 'btn btn-default btn-sm btn btn-danger' %>
+          <% if @user == nil %>
+            <%= link_to "投稿内容を編集する", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-success' %>
+            <%= link_to "投稿内容を削除する", picture_path(picture.id), method: :delete, data: {confirm: "本当に削除して良いですか？"}, class: 'btn btn-default btn-sm btn btn-danger' %>
+          <% else %>
+            <%= link_to "投稿内容を編集する", edit_picture_path(picture.id, user_id: current_user.id), class: 'btn btn-default btn-sm btn-success' %>
+            <%= link_to "投稿内容を削除する", picture_path(picture.id, user_id: current_user.id), method: :delete, data: {confirm: "本当に削除して良いですか？"}, class: 'btn btn-default btn-sm btn btn-danger' %>
+          <% end %>
         <% end %>
       </div>
     <% end %>

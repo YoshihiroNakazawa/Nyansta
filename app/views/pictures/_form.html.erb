@@ -2,25 +2,26 @@
 
   <%= f.error_messages! %>
 
-  <%= f.label :title %>
-  <%= f.text_field :title, class: 'form-control' %>
-  <br>
+  <div class="field">
+    <%= f.text_field :title, autofocus: true, class: 'form-control', placeholder: "タイトル" %>
+  </div>
+  <!--br-->
 
   <% if @picture.image? %>
     <%= image_tag @picture.image.url %>
   <% end %>
-  <br>
-  <%= f.label :image %>
+  <!--br-->
+  <!--<%= f.label :image %>-->
   <%= f.file_field :image %>
   <%= f.hidden_field :image_cache %>
-  <br>
-  <br>
+  <!--br-->
 
-  <%= f.label :comment %>
-  <%= f.text_field :comment, class: 'form-control' %>
-  <br>
+  <div class="field">
+    <%= f.text_field :comment, class: 'form-control', placeholder: "コメント" %>
+  </div>
+
   <%= f.submit '投稿', class: 'btn btn-primary btn-block' %>
 <% end %>
-<br>
+<!--br-->
 <!--<%= link_to "画像一覧", pictures_path %>-->
 <%= link_to "戻る", :back %>
