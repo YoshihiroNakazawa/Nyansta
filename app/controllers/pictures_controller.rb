@@ -1,5 +1,5 @@
 class PicturesController < ApplicationController
-  before_action :authenticate_user!
+  before_action :authenticate_user!, only: [:new, :create, :edit, :update, :destroy, :confirm]
 
   before_action :set_picture, only: [:edit, :update, :destroy]
 

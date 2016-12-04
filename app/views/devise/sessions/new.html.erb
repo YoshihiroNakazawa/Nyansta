@@ -11,7 +11,10 @@
     </div>
     <div class="col-md-4 col-md-offset-0 col-sm-6 col-sm-offset-3" style="margin-top:10%; background:white;">
       <br>
-      <img src="<%= asset_path "logonyan1.png" %>" style="width:50%;"><br><br>
+      <%= link_to root_path do %>
+        <img src="<%= asset_path "logonyan1.png" %>" style="width:50%;">
+      <% end %>
+      <br><br>
 
       <%= form_for(resource, as: resource_name, url: session_path(resource_name)) do |f| %>
         <%= devise_error_messages! %>

@@ -26,14 +26,18 @@
               <span class="caret"></span>
             </a>
             <ul class="dropdown-menu">
-              <% if params[:user_id] %>
-                <li><%= link_to "新規投稿", new_picture_path(user_id: params[:user_id]) %></li>
+              <% if current_user == nil %>
+                <li><%= link_to 'ログイン', new_user_session_path %></li>
               <% else %>
-                <li><%= link_to "新規投稿", new_picture_path %></li>
+                <% if params[:user_id] %>
+                  <li><%= link_to "新規投稿", new_picture_path(user_id: params[:user_id]) %></li>
+                <% else %>
+                  <li><%= link_to "新規投稿", new_picture_path %></li>
+                <% end %>
+                <li><%= link_to "過去の投稿", [current_user, :pictures] %></li>
+                <li><%= link_to 'プロフィール', edit_user_registration_path %></li>
+                <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
               <% end %>
-              <li><%= link_to "過去の投稿", [current_user, :pictures] %></li>
-              <li><%= link_to 'プロフィール', edit_user_registration_path %></li>
-              <li><%= link_to 'ログアウト', destroy_user_session_path, method: :delete %></li>
             </ul>
           </li>
 

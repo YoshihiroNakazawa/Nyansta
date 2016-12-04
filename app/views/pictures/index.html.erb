@@ -8,7 +8,7 @@
 
 <div class="container">
   <div class="wrapper col-md-8 col-md-offset-2 col-sm-10">
-    
+
     <!--<h1>投稿画像一覧</h1>-->
 
     <!--<%= link_to "新規画像投稿", new_picture_path, class: 'btn btn-default' %>-->
@@ -33,7 +33,7 @@
           <%= image_tag picture.image.url %>
         <% end %><br>
         <p><%= picture.comment %></p>
-        <% if picture.user_id == current_user.id %>
+        <% if current_user != nil && picture.user_id == current_user.id %>
           <% if @user == nil %>
             <%= link_to "投稿内容を編集する", edit_picture_path(picture.id), class: 'btn btn-default btn-sm btn-success' %>
             <%= link_to "投稿内容を削除する", picture_path(picture.id), method: :delete, data: {confirm: "本当に削除して良いですか？"}, class: 'btn btn-default btn-sm btn btn-danger' %>
