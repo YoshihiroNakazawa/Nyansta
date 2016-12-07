@@ -18,10 +18,36 @@
         <div class="user_image">
           <%= profile_img(@user) if profile_img(@user) %>
         </div>
-        <%= @user.name %>
+        <div class="user_name">
+          <%= @user.name %>
+          <% if current_user != nil && @user.id == current_user.id %>
+            <p>
+              <%= @pictures.size.to_s %>件の投稿
+              <% if params[:user_id] %>
+                <%= link_to new_picture_path(user_id: params[:user_id]) do %>
+                  <i class="fa fa-camera-retro"></i>
+                <% end %>
+              <% else %>
+                <%= link_to new_picture_path do %>
+                  <i class="fa fa-camera-retro"></i>
+                <% end %>
+              <% end %>
+            </p>
+          <% else %>
+            <p><%= @pictures.size.to_s %>件の投稿</p>
+          <% end %>
+        </div>
+
       </div>
     <% end %>
 
+    <% if @pictures.size == 0 %>
+      <% if @user == nil %>
+        <p>投稿は一件もありません。</p>
+      <% else %>
+        <p><%= @user.name %>の投稿は一件もありません。</p>
+      <% end %>
+    <% end %>
     <% @pictures.each do |picture| %>
       <div class="row">
         <% if @user == nil %>

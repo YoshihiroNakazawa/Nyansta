@@ -23,7 +23,6 @@ class PicturesController < ApplicationController
   def create
     @picture = Picture.new(pictures_params)
     @picture.user_id = current_user.id
-    #binding.pry
     if @picture.save
       if params[:user_id]
         redirect_to user_pictures_path(user_id: params[:user_id]), notice: "画像を投稿しました。"
@@ -67,8 +66,14 @@ class PicturesController < ApplicationController
   end
 
   def confirm
-    @picture = Picture.new(pictures_params)
-    render :new if @picture.invalid?
+    #binding.pry
+    if params[:picture]
+      @picture = Picture.new(pictures_params)
+      render :new, user_id: params[:user_id] if @picture.invalid?
+    else
+      @picture = Picture.new
+      render :new, user_id: params[:user_id]
+    end
   end
 
   private

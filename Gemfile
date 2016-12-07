@@ -46,8 +46,10 @@ group :development, :test do
   gem 'better_errors'
 end
 
-gem 'carrierwave'
+#gem 'carrierwave'
+gem 'carrierwave', git: "https://github.com/carrierwaveuploader/carrierwave.git"
 gem 'rmagick'
+gem 'fog'
 
 gem 'twitter-bootstrap-rails'
 
